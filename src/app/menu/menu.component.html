@@ -1,0 +1,152 @@
+<div style="margin-left: 3cm; margin-top: 2.8cm">
+  <button type="button" class="btn btn-info" (click)="showForm = true">
+    Add Menu
+  </button>
+  <button
+    type="button"
+    class="btn btn-info"
+    (click)="getAllMenu()"
+    style="margin-left: 0.5cm"
+  >
+    View Menu
+  </button>
+  <table style="margin-left: 22cm; margin-top: -2cm">
+    <tr>
+      <td>
+        <input
+          class="form-control"
+          style="width: 1.5cm"
+          type="text"
+          #menuId
+          placeholder="menu Id"
+        />
+      </td>
+      <td>
+        <input
+          class="form-control"
+          style="margin-left: 0.5cm; width: 1.5cm"
+          type="text"
+          #restaurantId
+          placeholder="restaurant Id"
+        />
+      </td>
+      <td>
+        <button
+          style="margin-left: 0.5cm"
+          type="button"
+          class="btn btn-info"
+          (click)="updateMenuByRestro(menuId.value, restaurantId.value)"
+        >
+          Assign Menu
+        </button>
+      </td>
+    </tr>
+  </table>
+  <pre></pre>
+  <pre></pre>
+  <div class="grid-container">
+    <div *ngFor="let menu of allMenus">
+      <div>
+        <div class="card" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="/assets/{{ menu.menuImg }}"
+            alt="Card image cap"
+            width="90px"
+            height="200px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <div style="color: blue">
+                <u>{{ menu.menu }}</u>
+              </div>
+            </h5>
+            <div>Id: {{ menu.menuId }}</div>
+            <div>Price: {{ menu.price }}</div>
+            <div>
+              <table>
+                <tr>
+                  <td>
+                    <!-- <input
+                      type="text"
+                      class="form-control"
+                      style="width: 1cm"
+                      #menuId
+                    /> -->
+                  </td>
+                  <td>
+                    <a
+                      ><img
+                        src="/assets/delete.png"
+                        height="24"
+                        (click)="deleteMenu(menu.menuId)"
+                    /></a>
+                  </td>
+                  <td>
+                    <a
+                      ><img
+                        src="/assets/edit.png"
+                        height="24"
+                        style="margin-left: 0.1cm"
+                    /></a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    </div>
+  </div>
+</div>
+<pre></pre>
+<pre></pre>
+<div *ngIf="showForm">
+  <form
+    style="margin-left: 3cm; width: 40%"
+    #menuForm="ngForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <label for="menu">Menu Name</label>
+      <input
+        type="text"
+        class="form-control"
+        #menuName="ngModel"
+        [(ngModel)]="menu.menu"
+        id="menu"
+        name="menu"
+      />
+    </div>
+    <div class="form-group">
+      <label for="price">Menu Price</label>
+      <input
+        type="text"
+        class="form-control"
+        #price="ngModel"
+        [(ngModel)]="menu.price"
+        id="price"
+        name="price"
+      />
+    </div>
+    <!-- <div class="form-group">
+            <label for="itemImage">Menu Image</label>
+            <input type="file" class="form-control" #menuImg="ngModel" [(ngModel)]="menuDTO.menuImg" id="menuImg" name="menuImg" >
+          </div> -->
+
+    <div class="form-group">
+      <label for="menuImg">Menu Image</label>
+      <input
+        type="text"
+        class="form-control"
+        #menuImg="ngModel"
+        [(ngModel)]="menu.menuImg"
+        id="menuImg"
+        name="menuImg"
+      />
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+  </form>
+</div>

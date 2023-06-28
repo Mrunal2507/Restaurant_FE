@@ -1,0 +1,34 @@
+<div style="margin-left: 3cm; margin-top: 2.8cm">
+  <button type="button" class="btn btn-info" (click)="getAllRestaurant()">
+    View Restaurants
+  </button>
+  <pre></pre>
+  <pre></pre>
+  <div class="grid-container">
+    <div *ngFor="let res of allres">
+      <div>
+        <div class="card" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="/assets/{{ res.resImg }}"
+            alt="Card image cap"
+            width="90px"
+            height="200px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <div style="color: blue">
+                <a routerLink="/viewMenu"
+                  ><u>{{ res.resName }}</u></a
+                >
+              </div>
+            </h5>
+            <div>Id: {{ res.restaurantId }}</div>
+            <div>Owner: {{ res.ownerName }}</div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>

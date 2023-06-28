@@ -1,0 +1,56 @@
+<div style="margin-left: 3cm; margin-top: 2.8cm">
+  <!--CALL METHOD TO LOAD RESTAURANTS OF THAT OWNER-->
+  <table>
+    <tr>
+      <td>
+        <input
+          style="width: 5cm"
+          type="text"
+          class="form-control"
+          #ownerName
+          placeholder="owner name"
+        />
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info"
+          (click)="getRestaurantsByOwnerName(ownerName.value)"
+          style="margin-left: 0.5cm"
+        >
+          View Restaurants
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <pre></pre>
+  <pre></pre>
+  <div class="grid-container">
+    <div *ngFor="let res of restro">
+      <div>
+        <div class="card" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="/assets/{{ res.resImg }}"
+            alt="Card image cap"
+            width="90px"
+            height="200px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <div style="color: blue">
+                <a routerLink="/viewMenu"
+                  ><u>{{ res.resName }}</u></a
+                >
+              </div>
+            </h5>
+            <div>Id: {{ res.restaurantId }}</div>
+            <div>Owner: {{ res.ownerName }}</div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>

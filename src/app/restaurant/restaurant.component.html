@@ -1,0 +1,114 @@
+<div style="margin-left: 3cm; margin-top: 2.8cm">
+  <button type="button" class="btn btn-info" (click)="showForm = true">
+    Add Restaurant
+  </button>
+  <button
+    style="margin-left: 0.5cm"
+    type="button"
+    class="btn btn-info"
+    (click)="getAllRestaurant()"
+  >
+    View Restaurants
+  </button>
+  <pre></pre>
+  <pre></pre>
+  <div class="grid-container">
+    <div *ngFor="let res of allres">
+      <div>
+        <div class="card" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="/assets/{{ res.resImg }}"
+            alt="Card image cap"
+            width="90px"
+            height="200px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <div style="color: blue">
+                <u>{{ res.resName }}</u>
+              </div>
+            </h5>
+            <div>Id: {{ res.restaurantId }}</div>
+            <div>Owner: {{ res.ownerName }}</div>
+            <div>
+              <table>
+                <tr>
+                  <td>
+                    <!-- <input
+                      type="text"
+                      class="form-control"
+                      style="width: 1cm"
+                      #restaurantId
+                    /> -->
+                  </td>
+                  <td>
+                    <a
+                      ><img
+                        src="/assets/delete.png"
+                        height="24"
+                        (click)="deleteRestaurant(res.restaurantId)"
+                    /></a>
+                  </td>
+                  <td>
+                    <a
+                      ><img
+                        src="/assets/edit.png"
+                        height="24"
+                        style="margin-left: 0.1cm"
+                    /></a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>
+<pre></pre>
+<pre></pre>
+<div *ngIf="showForm">
+  <form
+    style="margin-left: 3cm; width: 40%"
+    #restroForm="ngForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <label for="resName">Restaurant Name</label>
+      <input
+        type="text"
+        class="form-control"
+        #resName="ngModel"
+        [(ngModel)]="res.resName"
+        id="resName"
+        name="resName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="ownerName">Restaurant's Owner</label>
+      <input
+        type="text"
+        class="form-control"
+        #ownerName="ngModel"
+        [(ngModel)]="res.ownerName"
+        id="ownerName"
+        name="ownerName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="resImg">Restaurant Image</label>
+      <input
+        type="text"
+        class="form-control"
+        #menuImg="ngModel"
+        [(ngModel)]="res.resImg"
+        id="resImg"
+        name="resImg"
+      />
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
+  </form>
+</div>

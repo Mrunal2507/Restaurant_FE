@@ -1,0 +1,55 @@
+<div style="margin-left: 3cm; margin-top: 2.8cm">
+  <table>
+    <tr>
+      <td>
+        <input
+          style="width: 5cm"
+          type="text"
+          class="form-control"
+          #resName
+          placeholder="Restaurant name"
+        />
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-info"
+          (click)="getMenuByRestaurant(resName.value)"
+          style="margin-left: 0.5cm"
+        >
+          View Menu
+        </button>
+      </td>
+    </tr>
+  </table>
+  <pre></pre>
+  <pre></pre>
+  <div class="grid-container">
+    <div *ngFor="let menu of allmenu">
+      <div>
+        <div class="card" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="/assets/{{ menu.menuImg }}"
+            alt="Card image cap"
+            width="90px"
+            height="200px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <div style="color: blue">
+                <a routerLink="/order"
+                  ><u>{{ menu.menu }}</u></a
+                >
+              </div>
+            </h5>
+            <div>Id: {{ menu.menuId }}</div>
+            <div>Price: {{ menu.price }}</div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    </div>
+  </div>
+</div>
